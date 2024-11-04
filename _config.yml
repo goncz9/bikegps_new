@@ -4,7 +4,7 @@ email: support@bikegps.app
 author: Innostart Kft.
 description:
 url: https://bikegps.app
-baseurl: https://bikegps.app
+baseurl: /
 
 # Build settings
 permalink: :title/
