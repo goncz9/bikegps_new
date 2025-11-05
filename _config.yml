@@ -7,11 +7,24 @@ url: https://bikegps.app
 baseurl: /
 
 # Build settings
+markdown: kramdown
 permalink: :title/
 sass:
   sass_dir: css
+  style: compressed
+github: [metadata]
+encoding: UTF-8
+kramdown:
+  input: GFM
+  hard_wrap: false
+plugins:        
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-github-metadata
 
 exclude:
+  - Gemfile
+  - Gemfile.lock
   - readme_files
   - README.md
   - CNAME
