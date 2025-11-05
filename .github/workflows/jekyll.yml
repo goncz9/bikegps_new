@@ -51,8 +51,17 @@ jobs:
         run: |
           bundle exec jekyll build --trace
 
+      - name: List built site for debug
+        run: |
+          echo "GITHUB RUN ID: $GITHUB_RUN_ID"
+          echo "Repository: $GITHUB_REPOSITORY"
+          ls -la _site || true
+          du -sh _site || true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
 
   deploy:
     environment:
