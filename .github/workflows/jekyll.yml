@@ -26,20 +26,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'  # Updated Ruby version
-          bundler-cache: true
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Build with Jekyll
+          ruby-version: '3.2'
+          bundler-cache: false  # Disable bundler cache
+      
+      - name: Bundle Install
         run: |
+          bundle config set --local deployment false
           bundle config set --local path 'vendor/bundle'
           bundle install
-          bundle exec jekyll build
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      
+      - name: Build with Jekyll
+        run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
